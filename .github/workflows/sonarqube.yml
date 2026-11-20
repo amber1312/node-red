@@ -41,7 +41,8 @@ jobs:
             -Dsonar.projectKey=nodered \
             -Dsonar.host.url=http://localhost:9000 \
             -Dsonar.token="$SONAR_TOKEN" \
-            -Dsonar.exclusions='**/node_modules/**,test/**,**/public/**,**/vendor/**,**/*.min.js,**/docs/**'
+            -Dsonar.exclusions='test/**,**/public/**,**/vendor/**,**/*.min.js,**/docs/**' \
+            -Dsonar.javascript.exclusions='**/public/**,**/vendor/**,**/*.min.js,**/*.d.ts'
 
       - name: Wait for analysis to finish
         run: |
