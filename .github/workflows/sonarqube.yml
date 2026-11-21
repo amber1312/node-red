@@ -42,7 +42,8 @@ jobs:
             -Dsonar.host.url=http://localhost:9000 \
             -Dsonar.token="$SONAR_TOKEN" \
             -Dsonar.exclusions='test/**,**/public/**,**/vendor/**,**/*.min.js,**/docs/**' \
-            -Dsonar.javascript.exclusions='**/public/**,**/vendor/**,**/*.min.js,**/*.d.ts'
+            -Dsonar.javascript.exclusions='**/public/**,**/vendor/**,**/*.min.js,**/*.d.ts' \
+            -Dsonar.scm.exclusions.disabled=true
 
       - name: Wait for analysis to finish
         run: |
