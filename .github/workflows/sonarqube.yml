@@ -62,6 +62,12 @@ jobs:
           curl -s -u "$SONAR_TOKEN:" "http://localhost:9000/api/issues/search?componentKeys=nodered&types=VULNERABILITY&ps=500" > sonar-vulnerabilities.json
           curl -s -u "$SONAR_TOKEN:" "http://localhost:9000/api/hotspots/search?project=nodered&ps=500" > sonar-hotspots.json
 
+      - name: Check analysed size
+        run: |
+          curl -s -u "$SONAR_TOKEN:" "http://localhost:9000/api/measures/component?component=nodered&metricKeys=ncloc,files,violations"
+          echo
+          curl -s -u "$SONAR_TOKEN:" "http://localhost:9000/api/issues/search?componentKeys=nodered&ps=1&facets=directories"
+
       - name: Verify scan output
         run: |
           test -s sonar-issues.json
